@@ -1,0 +1,17 @@
+# Keybindings require three things to be fully defined: A selector that is
+# matched against the focused element, the keystroke and the command to
+# execute.
+#
+# Below is a basic keybinding which registers on all platforms by applying to
+# the root workspace element.
+
+# For more detailed documentation see
+# https://atom.io/docs/latest/advanced/keymaps
+'.editor':
+  'alt-up': 'space-block-jumper:jump-up'
+  'alt-down': 'space-block-jumper:jump-down'
+  'alt-shift-up': 'space-block-jumper:jump-select-up'
+  'alt-shift-down': 'space-block-jumper:jump-select-down'
+  'alt-shift-end': 'editor:select-to-end-of-line'
+  'alt-shift-home': 'editor:select-to-first-character-of-line'
+  'alt-cmd-d': 'space-block-jumper:select-block'
