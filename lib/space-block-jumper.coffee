@@ -1,7 +1,7 @@
 {Range, TextBuffer, Cursor} = require 'atom'
 module.exports =
   configDefaults:
-    skipCloseEdge: true
+    skipClosestEdge: true
 
   activate: (state) ->
     atom.workspaceView.command "space-block-jumper:select-block", ".editor", -> selectBlock(1, true)
@@ -42,7 +42,7 @@ selectBlock = () ->
   topLine = getNewLine currLine, -1, true
   bottomLine = getNewLine currLine, 1, true
   bottomLineLength = window.sbj_buffer.lineLengthForRow bottomLine
-  
+
   blockRange = Range.fromPointWithDelta [topLine, 0], bottomLine-topLine+1, bottomLineLength-1
   window.sbj_editor.setSelectedBufferRange blockRange
 
@@ -52,7 +52,7 @@ getNewLine = (currLine, direction, stayInBlock=false) ->
   if not isInBounds nextLine
     return currLine
 
-  skipCloseEdge = atom.config.get "space-block-jumper.skipCloseEdge"
+  skipCloseEdge = atom.config.get "space-block-jumper.skipClosestEdge"
 
   # moving in emptiness
   if isEmptyLine(currLine) and isEmptyLine(nextLine)
