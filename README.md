@@ -9,6 +9,8 @@ You only jump outside of a block from the edge of it. If you are inside you jump
 By default 'skipCloseEdge' is enabled which will skip the closest edge of the block you are jumping to.
 By disabling it you can visit every edge even though moving in only one direction.
 
+![screenshot](http://i.imgur.com/VZk2uX4.gif)
+
 # Usage
 Keybind | Action
 ------- | ------
@@ -19,9 +21,6 @@ Keybind | Action
 <kbd>alt</kbd>+<kbd>cmd</kbd>+<kbd>d</kbd> | select block around cursor, consecutive usage cycles downward
 
 # Ideas
-
-Multi cursor support
-Improve selection retraction
-Selection indentation
-
-[screenshot](http://i.imgur.com/VZk2uX4.gif)
+*Multi cursor support
+*Improve selection retraction
+*Selection indentation
