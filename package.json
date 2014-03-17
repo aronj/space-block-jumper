@@ -1,7 +1,7 @@
 {
   "name": "space-block-jumper",
   "main": "./lib/space-block-jumper",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Navigational package lets you jump with the cursor vertically across space separated blocks, skipping empty lines. It also lets you select while jumping and has a command that selects current block.",
   "repository": "https://github.com/aronj/space-block-jumper",
   "license": "MIT",
