@@ -21,6 +21,6 @@ Keybind | Action
 <kbd>alt</kbd>+<kbd>cmd</kbd>+<kbd>d</kbd> | select block around cursor, consecutive usage cycles downward
 
 # Ideas
--Multi cursor support
--Improve selection retraction
--Selection indentation
+- Multi cursor support
+- Improve selection retraction
+- Selection indentation
