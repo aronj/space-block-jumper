@@ -2,6 +2,7 @@
 module.exports =
   configDefaults:
     skipClosestEdge: true
+    jumpToBlockSeparator: false
 
   activate: ->
     atom.workspaceView.command "space-block-jumper:jump-up", ".editor", -> jump(-1)
@@ -17,7 +18,11 @@ setCommandContext = ->
 jump = (direction, select=false) ->
   setCommandContext()
   currLine = window.sbj_editor.getCursor().getBufferRow()
-  newLine = getNewLine currLine, direction
+
+  skipClosestEdge = atom.config.get "space-block-jumper.skipClosestEdge"
+  jumpToBlockSeparator = atom.config.get "space-block-jumper.jumpToBlockSeparator"
+
+  newLine = getNewLine currLine, direction, skipClosestEdge, jumpToBlockSeparator
 
   if direction is -1
     delta = currLine-newLine
@@ -39,23 +44,30 @@ selectBlock = ->
   setCommandContext()
   currLine = window.sbj_editor.getCursor().getBufferRow()
 
-  topLine = getNewLine currLine, -1, true
-  bottomLine = getNewLine currLine, 1, true
+  skipClosestEdge = atom.config.get "space-block-jumper.skipClosestEdge"
+
+  topLine = getNewLine currLine, -1, skipClosestEdge, false, true
+  bottomLine = getNewLine currLine, 1, skipClosestEdge, false, true
   bottomLineLength = window.sbj_buffer.lineLengthForRow bottomLine
 
   blockRange = Range.fromPointWithDelta [topLine, 0], bottomLine-topLine+1, bottomLineLength-1
   window.sbj_editor.setSelectedBufferRange blockRange
 
-getNewLine = (currLine, direction, stayInBlock=false) ->
+getNewLine = (currLine, direction, skipCloseEdge, jumpToBlockSeparator, stayInBlock=false) ->
   nextLine = currLine + direction
 
   if not isInBounds nextLine
     return currLine
 
-  skipCloseEdge = atom.config.get "space-block-jumper.skipClosestEdge"
+  if jumpToBlockSeparator
+    currLine += direction
+    while isInBounds(currLine+direction) and isEmptyLine(currLine) == isEmptyLine(currLine+direction)
+      currLine += direction
+    return currLine+(if not isEmptyLine(currLine) then direction else 0)
 
   # moving in emptiness
   if isEmptyLine(currLine) and isEmptyLine(nextLine)
+    currLine += direction
     while isInBounds(currLine+direction) and isEmptyLine(currLine+direction)
       currLine += direction
     if not stayInBlock
@@ -63,6 +75,7 @@ getNewLine = (currLine, direction, stayInBlock=false) ->
 
   # moving inside a block
   else if not isEmptyLine(currLine) and not isEmptyLine(nextLine)
+    currLine += direction
     while isInBounds(currLine+direction) and not isEmptyLine currLine+direction
       currLine += direction
 
