@@ -7,7 +7,7 @@ This package lets you jump with the cursor vertically across space separated blo
 ![screenshot](http://i.imgur.com/VZk2uX4.gif)
 
 # Usage
-Jumping inside a block takes you to the its edge. Jumping outward from an edge takes you to the next block. By default 'Skip Closest Edge' is enabled which will skip the closest edge in the next block and move to the far side edge. By disabling it you can instead visit every edge even though moving in only one direction.
+Jumping inside a block takes you to the its edge. Jumping outward from an edge takes you to the next block. By default 'Skip Closest Edge' is enabled which will skip the closest edge for far side edge in the next block. By disabling it you can instead visit every edge even though moving in only one direction. 'Jump To Block Separator' introduces the same behaviour as [block-travel](https://atom.io/packages/block-travel) by landing between blocks.
 
 Keybind | Action
 ------- | ------
