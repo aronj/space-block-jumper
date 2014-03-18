@@ -4,14 +4,11 @@ Navigational package for the atom text editor.
 
 This package lets you jump with the cursor vertically across space separated blocks, skipping empty lines. It also lets you select while jumping and has a command that selects current block.
 
-You only jump outside of a block from the edge of it. If you are inside you jump to the edge in that direction.
-
-By default 'Skip Closest Edge' is enabled which will skip the closest edge of the block you are jumping to.
-By disabling it you can visit every edge even though moving in only one direction.
-
 ![screenshot](http://i.imgur.com/VZk2uX4.gif)
 
 # Usage
+Jumping inside a block takes you to the its edge. Jumping outward from an edge takes you to the next block. By default 'Skip Closest Edge' is enabled which will skip the closest edge in the next block and move to the far side edge. By disabling it you can instead visit every edge even though moving in only one direction.
+
 Keybind | Action
 ------- | ------
 <kbd>alt</kbd>+<kbd>up</kbd> | jump up
@@ -21,6 +18,8 @@ Keybind | Action
 <kbd>alt</kbd>+<kbd>cmd</kbd>+<kbd>d</kbd> | select block around cursor, consecutive usage cycles downward
 
 # Ideas
-- Multi cursor support
-- Improve selection retraction
-- Selection indentation
+* Improve selection retraction
+* Improve selection expansion when using alt+cmd+d
+* Always land next to a character
+* Multi cursor support
+* Modify selection indentation

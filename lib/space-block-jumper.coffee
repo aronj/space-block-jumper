@@ -1,14 +1,14 @@
-{Range, TextBuffer, Cursor} = require 'atom'
+{Range} = require 'atom'
 module.exports =
   configDefaults:
     skipClosestEdge: true
 
-  activate: (state) ->
-    atom.workspaceView.command "space-block-jumper:select-block", ".editor", -> selectBlock(1, true)
+  activate: ->
     atom.workspaceView.command "space-block-jumper:jump-up", ".editor", -> jump(-1)
     atom.workspaceView.command "space-block-jumper:jump-down", ".editor", -> jump(1)
     atom.workspaceView.command "space-block-jumper:jump-select-up", ".editor", -> jump(-1, true)
     atom.workspaceView.command "space-block-jumper:jump-select-down", ".editor", -> jump(1, true)
+    atom.workspaceView.command "space-block-jumper:select-block", ".editor", -> selectBlock(1, true)
 
 setCommandContext = ->
   window.sbj_editor = atom.workspace.getActiveEditor()
@@ -35,7 +35,7 @@ jump = (direction, select=false) ->
       window.sbj_editor.selectDown(delta)
       window.sbj_editor.selectToEndOfLine()
 
-selectBlock = () ->
+selectBlock = ->
   setCommandContext()
   currLine = window.sbj_editor.getCursor().getBufferRow()
 
