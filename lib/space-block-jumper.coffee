@@ -9,7 +9,7 @@ module.exports =
     atom.workspaceView.command "space-block-jumper:jump-down", ".editor", -> jump(1)
     atom.workspaceView.command "space-block-jumper:jump-select-up", ".editor", -> jump(-1, true)
     atom.workspaceView.command "space-block-jumper:jump-select-down", ".editor", -> jump(1, true)
-    atom.workspaceView.command "space-block-jumper:select-block", ".editor", -> selectBlock(1, true)
+    atom.workspaceView.command "space-block-jumper:select-block", ".editor", -> selectBlock()
 
 setCommandContext = ->
   window.sbj_editor = atom.workspace.getActiveEditor()
@@ -44,16 +44,14 @@ selectBlock = ->
   setCommandContext()
   currLine = window.sbj_editor.getCursor().getBufferRow()
 
-  skipClosestEdge = atom.config.get "space-block-jumper.skipClosestEdge"
-
-  topLine = getNewLine currLine, -1, skipClosestEdge, false, true
-  bottomLine = getNewLine currLine, 1, skipClosestEdge, false, true
+  topLine = getNewLine currLine, -1, true, false, true
+  bottomLine = getNewLine currLine, 1, true, false, true
   bottomLineLength = window.sbj_buffer.lineLengthForRow bottomLine
 
   blockRange = Range.fromPointWithDelta [topLine, 0], bottomLine-topLine+1, bottomLineLength-1
   window.sbj_editor.setSelectedBufferRange blockRange
 
-getNewLine = (currLine, direction, skipCloseEdge, jumpToBlockSeparator, stayInBlock=false) ->
+getNewLine = (currLine, direction, skipClosestEdge, jumpToBlockSeparator, stayInBlock=false) ->
   nextLine = currLine + direction
 
   if not isInBounds nextLine
@@ -82,7 +80,7 @@ getNewLine = (currLine, direction, skipCloseEdge, jumpToBlockSeparator, stayInBl
   # moving from an edge of a block
   else if not isEmptyLine(currLine) and isEmptyLine(nextLine) and not stayInBlock
     currLine += direction
-    if skipCloseEdge
+    if skipClosestEdge
       while isInBounds(currLine+direction) and not (not isEmptyLine(currLine) and isEmptyLine(currLine+direction))
         currLine += direction
     else
