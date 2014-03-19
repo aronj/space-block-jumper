@@ -1,7 +1,7 @@
 {
   "name": "space-block-jumper",
   "main": "./lib/space-block-jumper",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Jump vertically across space separated blocks, skipping empty lines. Select while jumping and a command that selects current block.",
   "repository": "https://github.com/aronj/space-block-jumper",
   "license": "MIT",
