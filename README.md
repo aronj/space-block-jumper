@@ -1,21 +1,27 @@
 # Space Block Jumper
 
-Navigational package for the atom text editor.
+Navigational package for the Atom text editor.
 
 This package lets you jump with the cursor vertically across space separated blocks, skipping empty lines. It also lets you select while jumping and has a command that selects current block.
 
 ![screenshot](http://i.imgur.com/VZk2uX4.gif)
 
 # Usage
-Jumping inside a block takes you to the its edge. Jumping outward from an edge takes you to the next block. By default 'Skip Closest Edge' is enabled which will skip the closest edge for far side edge in the next block. By disabling it you can instead visit every edge even though moving in only one direction. 'Jump To Block Separator' introduces the same behaviour as [block-travel](https://atom.io/packages/block-travel) by landing between blocks.
-
-Keybind | Action
+Jumping inside a block takes you to the its edge. When jumping from an edge of a block the cursor skips the closest edge in the new block. Consecutive empty lines are always skipped.
+### Settings
+Settings | Description
 ------- | ------
-<kbd>alt</kbd>+<kbd>up</kbd> | jump up
-<kbd>alt</kbd>+<kbd>down</kbd> | jump down
-<kbd>alt</kbd>+<kbd>shift</kbd>+<kbd>up</kbd> | jump and select up
-<kbd>alt</kbd>+<kbd>shift</kbd>+<kbd>down</kbd> | jump and select down
-<kbd>alt</kbd>+<kbd>cmd</kbd>+<kbd>d</kbd> | select block around cursor, consecutive usage cycles downward
+Skip Closest Edge | Disable this to jump to every edge of every block irregardless of where you jump from. (Default: on)
+Jump To Block Separator | Enable this to always jump to empty lines. The same behavior as in the package [block-travel](https://atom.io/packages/block-travel). (Default: off)
+
+### Keybinds
+Keybind | Action
+--------- | ------
+<kbd>Alt</kbd>+<kbd>Up</kbd> | Jump up
+<kbd>Alt</kbd>+<kbd>Down</kbd> | Jump down
+<kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>Up</kbd> | Jump and select up
+<kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>Down</kbd> | Jump and select down
+<kbd>Alt</kbd>+<kbd>cmd</kbd>+<kbd>d</kbd> | Select block around cursor, consecutive usage cycles downward
 
 # Ideas
 * Improve selection retraction
