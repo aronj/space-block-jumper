@@ -24,6 +24,7 @@ Keybind | Action
 <kbd>Alt</kbd>+<kbd>Cmd</kbd>+<kbd>d</kbd> | Select block around cursor, consecutive usage cycles downward
 
 # Ideas
+* Fix bug: not stripping tabs from otherwise empty line
 * Improve selection retraction
 * Improve selection expansion when using alt+cmd+d
 * Always land next to a character
