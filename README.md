@@ -21,7 +21,7 @@ Keybind | Action
 <kbd>Alt</kbd>+<kbd>Down</kbd> | Jump down
 <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>Up</kbd> | Jump and select up
 <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>Down</kbd> | Jump and select down
-<kbd>Alt</kbd>+<kbd>cmd</kbd>+<kbd>d</kbd> | Select block around cursor, consecutive usage cycles downward
+<kbd>Alt</kbd>+<kbd>Cmd</kbd>+<kbd>d</kbd> | Select block around cursor, consecutive usage cycles downward
 
 # Ideas
 * Improve selection retraction
